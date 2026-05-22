@@ -690,6 +690,72 @@ body::before {
   margin-bottom: 6px;
 }
 
+/* ---------- QUICK INDEX (전체 칵테일 목록) ---------- */
+.quick-index {
+  margin-bottom: 80px;
+  padding: 40px 44px;
+  border: 1px solid var(--border-faint);
+  background: linear-gradient(180deg, rgba(200, 169, 106, 0.03), transparent);
+  position: relative;
+}
+.quick-index::before, .quick-index::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--gold);
+}
+.quick-index::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.quick-index::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.quick-index-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 32px;
+}
+.qi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px 36px;
+}
+.qi-cat-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-faint);
+}
+.qi-cat-name-kr {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-faint);
+  letter-spacing: 0.2em;
+  margin-left: 8px;
+}
+.qi-list { list-style: none; }
+.qi-list li { margin-bottom: 4px; }
+.qi-list a {
+  font-family: 'Noto Serif KR', serif;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 14.5px;
+  display: block;
+  padding: 4px 0;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.qi-list a:hover {
+  color: var(--gold-bright);
+  padding-left: 8px;
+}
+.cocktail { scroll-margin-top: 80px; }
+
 /* ---------- FOOTER ---------- */
 .footer {
   text-align: center;
@@ -770,6 +836,17 @@ body::before {
   .cocktail-taste::before { font-size: 9px; }
 
   .meta-tag { font-size: 10px; padding: 3px 8px; letter-spacing: 0.15em; }
+
+  /* Quick Index — mobile */
+  .quick-index { padding: 22px 18px; margin-bottom: 40px; }
+  .quick-index-title { font-size: 11px; letter-spacing: 0.35em; margin-bottom: 22px; }
+  .qi-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 18px 18px; }
+  .qi-cat-name { font-size: 11.5px; letter-spacing: 0.2em; margin-bottom: 10px; padding-bottom: 7px; }
+  .qi-cat-name-kr { font-size: 10px; letter-spacing: 0.15em; margin-left: 5px; }
+  .qi-list li { margin-bottom: 2px; }
+  .qi-list a { font-size: 13.5px; padding: 5px 0; }
+  .qi-list a:hover { padding-left: 0; }
+  .cocktail { scroll-margin-top: 60px; }
 
   .footer { margin-top: 60px; padding-top: 28px; }
   .footer-ornament { font-size: 42px; }
@@ -972,9 +1049,17 @@ def ingredient_summary(recipe):
         ings.append(clean)
     return " · ".join(ings)
 
+def make_id(c):
+    """Stable anchor ID for a cocktail (based on English name)."""
+    import re
+    en = c["en"].split("·")[0]  # Strip Japanese/extra parts
+    s = re.sub(r"[^\w\s-]", "", en.lower())
+    s = re.sub(r"[\s_]+", "-", s).strip("-")
+    return f"c-{s}" if s else f"c-{c['kr']}"
+
 def render_recipe_card(c):
     out = f'''
-    <article class="cocktail">
+    <article class="cocktail" id="{make_id(c)}">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">{c["kr"]}</h3>
@@ -1005,7 +1090,7 @@ def render_guest_card(c):
     tags_html = "".join(f'<span class="flavor-tag">{t}</span>' for t in c.get("tags", []))
     garnish = c.get("garnish") or "—"
     return f'''
-    <article class="cocktail">
+    <article class="cocktail" id="{make_id(c)}">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">{c["kr"]}</h3>
@@ -1022,6 +1107,31 @@ def render_guest_card(c):
         <dt>Garnish</dt><dd>{garnish}</dd>
       </dl>
     </article>'''
+
+def render_quick_index():
+    """전체 칵테일 목록 — 클릭하면 해당 설명으로 점프"""
+    by_cat = {}
+    for c in COCKTAILS:
+        by_cat.setdefault(c["cat"], []).append(c)
+    blocks = []
+    for cat_key, num, name_en, name_kr in SECTIONS:
+        cocktails = by_cat.get(cat_key, [])
+        if not cocktails:
+            continue
+        kr_short = name_kr.replace(" 베이스", "").strip()
+        items = "".join(
+            f'<li><a href="#{make_id(c)}">{c["kr"]}</a></li>' for c in cocktails
+        )
+        blocks.append(f'''
+        <div class="qi-cat">
+          <div class="qi-cat-name">{name_en}<span class="qi-cat-name-kr">{kr_short}</span></div>
+          <ul class="qi-list">{items}</ul>
+        </div>''')
+    return f'''
+    <nav class="quick-index" aria-label="전체 칵테일 목록">
+      <div class="quick-index-title">— Full List · 전체 목록 —</div>
+      <div class="qi-grid">{"".join(blocks)}</div>
+    </nav>'''
 
 def render_nav():
     by_cat = {}
@@ -1109,6 +1219,8 @@ def render_page(version, page_url=""):
     </div>
     <div class="cover-edition">{edition}<span class="label">{edition_label}</span></div>
   </header>
+
+  {render_quick_index()}
 
   {render_sections(version)}
 

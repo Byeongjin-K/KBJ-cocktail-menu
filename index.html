@@ -343,6 +343,72 @@ body::before {
   margin-bottom: 6px;
 }
 
+/* ---------- QUICK INDEX (전체 칵테일 목록) ---------- */
+.quick-index {
+  margin-bottom: 80px;
+  padding: 40px 44px;
+  border: 1px solid var(--border-faint);
+  background: linear-gradient(180deg, rgba(200, 169, 106, 0.03), transparent);
+  position: relative;
+}
+.quick-index::before, .quick-index::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--gold);
+}
+.quick-index::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.quick-index::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.quick-index-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 32px;
+}
+.qi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px 36px;
+}
+.qi-cat-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-faint);
+}
+.qi-cat-name-kr {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-faint);
+  letter-spacing: 0.2em;
+  margin-left: 8px;
+}
+.qi-list { list-style: none; }
+.qi-list li { margin-bottom: 4px; }
+.qi-list a {
+  font-family: 'Noto Serif KR', serif;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 14.5px;
+  display: block;
+  padding: 4px 0;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.qi-list a:hover {
+  color: var(--gold-bright);
+  padding-left: 8px;
+}
+.cocktail { scroll-margin-top: 80px; }
+
 /* ---------- FOOTER ---------- */
 .footer {
   text-align: center;
@@ -423,6 +489,17 @@ body::before {
   .cocktail-taste::before { font-size: 9px; }
 
   .meta-tag { font-size: 10px; padding: 3px 8px; letter-spacing: 0.15em; }
+
+  /* Quick Index — mobile */
+  .quick-index { padding: 22px 18px; margin-bottom: 40px; }
+  .quick-index-title { font-size: 11px; letter-spacing: 0.35em; margin-bottom: 22px; }
+  .qi-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 18px 18px; }
+  .qi-cat-name { font-size: 11.5px; letter-spacing: 0.2em; margin-bottom: 10px; padding-bottom: 7px; }
+  .qi-cat-name-kr { font-size: 10px; letter-spacing: 0.15em; margin-left: 5px; }
+  .qi-list li { margin-bottom: 2px; }
+  .qi-list a { font-size: 13.5px; padding: 5px 0; }
+  .qi-list a:hover { padding-left: 0; }
+  .cocktail { scroll-margin-top: 60px; }
 
   .footer { margin-top: 60px; padding-top: 28px; }
   .footer-ornament { font-size: 42px; }
@@ -521,6 +598,48 @@ body::before {
   </header>
 
   
+    <nav class="quick-index" aria-label="전체 칵테일 목록">
+      <div class="quick-index-title">— Full List · 전체 목록 —</div>
+      <div class="qi-grid">
+        <div class="qi-cat">
+          <div class="qi-cat-name">Vodka<span class="qi-cat-name-kr">보드카</span></div>
+          <ul class="qi-list"><li><a href="#c-godmother">갓마더</a></li><li><a href="#c-cosmopolitan">코스모폴리탄</a></li><li><a href="#c-cape-cod">케이프코드</a></li><li><a href="#c-blue-lagoon">블루라군</a></li><li><a href="#c-kamikaze">카미카제</a></li><li><a href="#c-black-russian">블랙 러시안</a></li><li><a href="#c-woo-woo">우우</a></li></ul>
+        </div>
+        <div class="qi-cat">
+          <div class="qi-cat-name">Whisky<span class="qi-cat-name-kr">위스키</span></div>
+          <ul class="qi-list"><li><a href="#c-godfather">갓파더</a></li></ul>
+        </div>
+        <div class="qi-cat">
+          <div class="qi-cat-name">Rum<span class="qi-cat-name-kr">럼</span></div>
+          <ul class="qi-list"><li><a href="#c-daiquiri">다이키리</a></li><li><a href="#c-cuba-libre">쿠바 리브레</a></li><li><a href="#c-bacardi-cocktail">바카디</a></li><li><a href="#c-sky-diving">스카이 다이빙</a></li><li><a href="#c-blue-heaven">블루 헤븐</a></li></ul>
+        </div>
+        <div class="qi-cat">
+          <div class="qi-cat-name">Tequila<span class="qi-cat-name-kr">데킬라</span></div>
+          <ul class="qi-list"><li><a href="#c-margarita">마가리타</a></li><li><a href="#c-matador">마타도르</a></li><li><a href="#c-mexicola">멕시콜라</a></li></ul>
+        </div>
+        <div class="qi-cat">
+          <div class="qi-cat-name">Gin<span class="qi-cat-name-kr">진</span></div>
+          <ul class="qi-list"><li><a href="#c-gimlet">김렛</a></li><li><a href="#c-white-lady">화이트 레이디</a></li></ul>
+        </div>
+        <div class="qi-cat">
+          <div class="qi-cat-name">Multi-Spirit<span class="qi-cat-name-kr">여러 혼합</span></div>
+          <ul class="qi-list"><li><a href="#c-adios-mother-fer">A.M.F</a></li><li><a href="#c-long-island-iced-tea">롱아일랜드 아이스티</a></li><li><a href="#c-long-beach-iced-tea">롱비치 아이스티</a></li></ul>
+        </div>
+        <div class="qi-cat">
+          <div class="qi-cat-name">Liqueur<span class="qi-cat-name-kr">리큐어</span></div>
+          <ul class="qi-list"><li><a href="#c-kahlua-coke">깔루아 콕</a></li><li><a href="#c-kahlua-matcha-milk">깔루아 말차 밀크</a></li><li><a href="#c-cassis-orange">카시스 오렌지</a></li><li><a href="#c-cassis-soda">카시스 소다</a></li><li><a href="#c-bocce-ball">보치 볼</a></li><li><a href="#c-aperol-spritz">아페롤 스프리츠</a></li><li><a href="#c-aperol-entrée">아페롤 입문</a></li><li><a href="#c-blue-sapphire">블루 사파이어</a></li></ul>
+        </div>
+        <div class="qi-cat">
+          <div class="qi-cat-name">Signature<span class="qi-cat-name-kr">시그니처</span></div>
+          <ul class="qi-list"><li><a href="#c-shōyōjurin">조엽수림</a></li><li><a href="#c-ocean-water">오션 워터</a></li><li><a href="#c-dream">꿈</a></li><li><a href="#c-green-field">그린 필드</a></li></ul>
+        </div>
+        <div class="qi-cat">
+          <div class="qi-cat-name">Mocktail<span class="qi-cat-name-kr">논알콜</span></div>
+          <ul class="qi-list"><li><a href="#c-st-clements">세인트 클레멘스</a></li><li><a href="#c-shirley-temple">셜리 템플</a></li></ul>
+        </div></div>
+    </nav>
+
+  
         <section class="section" id="vodka">
           <div class="section-header">
             <div class="section-number">I</div>
@@ -528,7 +647,7 @@ body::before {
             <div class="section-title-kr">보드카 베이스</div>
           </div>
           <div class="cocktail-grid">
-    <article class="cocktail">
+    <article class="cocktail" id="c-godmother">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">갓마더</h3>
@@ -545,7 +664,7 @@ body::before {
         <dt>Garnish</dt><dd>—</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-cosmopolitan">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">코스모폴리탄</h3>
@@ -562,7 +681,7 @@ body::before {
         <dt>Garnish</dt><dd>라임 슬라이스 또는 오렌지 필</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-cape-cod">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">케이프코드</h3>
@@ -579,7 +698,7 @@ body::before {
         <dt>Garnish</dt><dd>라임 웨지</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-blue-lagoon">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">블루라군</h3>
@@ -596,7 +715,7 @@ body::before {
         <dt>Garnish</dt><dd>레몬 슬라이스 · 체리</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-kamikaze">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">카미카제</h3>
@@ -613,7 +732,7 @@ body::before {
         <dt>Garnish</dt><dd>—</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-black-russian">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">블랙 러시안</h3>
@@ -630,7 +749,7 @@ body::before {
         <dt>Garnish</dt><dd>—</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-woo-woo">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">우우</h3>
@@ -655,7 +774,7 @@ body::before {
             <div class="section-title-kr">위스키 베이스</div>
           </div>
           <div class="cocktail-grid">
-    <article class="cocktail">
+    <article class="cocktail" id="c-godfather">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">갓파더</h3>
@@ -680,7 +799,7 @@ body::before {
             <div class="section-title-kr">럼 베이스</div>
           </div>
           <div class="cocktail-grid">
-    <article class="cocktail">
+    <article class="cocktail" id="c-daiquiri">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">다이키리</h3>
@@ -697,7 +816,7 @@ body::before {
         <dt>Garnish</dt><dd>—</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-cuba-libre">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">쿠바 리브레</h3>
@@ -714,7 +833,7 @@ body::before {
         <dt>Garnish</dt><dd>라임 웨지</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-bacardi-cocktail">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">바카디</h3>
@@ -731,7 +850,7 @@ body::before {
         <dt>Garnish</dt><dd>—</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-sky-diving">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">스카이 다이빙</h3>
@@ -748,7 +867,7 @@ body::before {
         <dt>Garnish</dt><dd>—</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-blue-heaven">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">블루 헤븐</h3>
@@ -773,7 +892,7 @@ body::before {
             <div class="section-title-kr">데킬라 베이스</div>
           </div>
           <div class="cocktail-grid">
-    <article class="cocktail">
+    <article class="cocktail" id="c-margarita">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">마가리타</h3>
@@ -790,7 +909,7 @@ body::before {
         <dt>Garnish</dt><dd>소금 림 (Salt Rim)</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-matador">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">마타도르</h3>
@@ -807,7 +926,7 @@ body::before {
         <dt>Garnish</dt><dd>파인애플</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-mexicola">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">멕시콜라</h3>
@@ -832,7 +951,7 @@ body::before {
             <div class="section-title-kr">진 베이스</div>
           </div>
           <div class="cocktail-grid">
-    <article class="cocktail">
+    <article class="cocktail" id="c-gimlet">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">김렛</h3>
@@ -849,7 +968,7 @@ body::before {
         <dt>Garnish</dt><dd>—</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-white-lady">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">화이트 레이디</h3>
@@ -874,7 +993,7 @@ body::before {
             <div class="section-title-kr">여러 베이스 혼합</div>
           </div>
           <div class="cocktail-grid">
-    <article class="cocktail">
+    <article class="cocktail" id="c-adios-mother-fer">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">A.M.F</h3>
@@ -891,7 +1010,7 @@ body::before {
         <dt>Garnish</dt><dd>레몬</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-long-island-iced-tea">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">롱아일랜드 아이스티</h3>
@@ -908,7 +1027,7 @@ body::before {
         <dt>Garnish</dt><dd>레몬 웨지</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-long-beach-iced-tea">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">롱비치 아이스티</h3>
@@ -933,7 +1052,7 @@ body::before {
             <div class="section-title-kr">리큐어 베이스</div>
           </div>
           <div class="cocktail-grid">
-    <article class="cocktail">
+    <article class="cocktail" id="c-kahlua-coke">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">깔루아 콕</h3>
@@ -950,7 +1069,7 @@ body::before {
         <dt>Garnish</dt><dd>—</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-kahlua-matcha-milk">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">깔루아 말차 밀크</h3>
@@ -967,7 +1086,7 @@ body::before {
         <dt>Garnish</dt><dd>말차 가루 (옵션)</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-cassis-orange">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">카시스 오렌지</h3>
@@ -984,7 +1103,7 @@ body::before {
         <dt>Garnish</dt><dd>오렌지 슬라이스</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-cassis-soda">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">카시스 소다</h3>
@@ -1001,7 +1120,7 @@ body::before {
         <dt>Garnish</dt><dd>레몬 트위스트</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-bocce-ball">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">보치 볼</h3>
@@ -1018,7 +1137,7 @@ body::before {
         <dt>Garnish</dt><dd>오렌지 슬라이스</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-aperol-spritz">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">아페롤 스프리츠</h3>
@@ -1035,7 +1154,7 @@ body::before {
         <dt>Garnish</dt><dd>오렌지 슬라이스</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-aperol-entrée">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">아페롤 입문</h3>
@@ -1052,7 +1171,7 @@ body::before {
         <dt>Garnish</dt><dd>레몬 필</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-blue-sapphire">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">블루 사파이어</h3>
@@ -1077,7 +1196,7 @@ body::before {
             <div class="section-title-kr">시그니처</div>
           </div>
           <div class="cocktail-grid">
-    <article class="cocktail">
+    <article class="cocktail" id="c-shōyōjurin">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">조엽수림</h3>
@@ -1094,7 +1213,7 @@ body::before {
         <dt>Garnish</dt><dd>—</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-ocean-water">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">오션 워터</h3>
@@ -1111,7 +1230,7 @@ body::before {
         <dt>Garnish</dt><dd>라임 웨지</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-dream">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">꿈</h3>
@@ -1128,7 +1247,7 @@ body::before {
         <dt>Garnish</dt><dd>—</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-green-field">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">그린 필드</h3>
@@ -1153,7 +1272,7 @@ body::before {
             <div class="section-title-kr">논알콜</div>
           </div>
           <div class="cocktail-grid">
-    <article class="cocktail">
+    <article class="cocktail" id="c-st-clements">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">세인트 클레멘스</h3>
@@ -1170,7 +1289,7 @@ body::before {
         <dt>Garnish</dt><dd>오렌지 슬라이스</dd>
       </dl>
     </article>
-    <article class="cocktail">
+    <article class="cocktail" id="c-shirley-temple">
       <div class="cocktail-head">
         <div>
           <h3 class="cocktail-name">셜리 템플</h3>
