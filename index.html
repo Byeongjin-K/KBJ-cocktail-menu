@@ -409,6 +409,31 @@ body::before {
 }
 .cocktail { scroll-margin-top: 80px; }
 
+/* ---------- BACK TO LIST BUTTON ---------- */
+.back-to-list {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid var(--border-faint);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.back-to-list:hover {
+  color: var(--gold);
+  border-color: var(--border);
+}
+.back-to-list::before {
+  content: '←';
+  font-size: 13px;
+}
+
 /* ---------- FOOTER ---------- */
 .footer {
   text-align: center;
@@ -500,6 +525,7 @@ body::before {
   .qi-list a { font-size: 13.5px; padding: 5px 0; }
   .qi-list a:hover { padding-left: 0; }
   .cocktail { scroll-margin-top: 60px; }
+  .back-to-list { font-size: 10px; letter-spacing: 0.2em; padding: 5px 12px; margin-top: 14px; }
 
   .footer { margin-top: 60px; padding-top: 28px; }
   .footer-ornament { font-size: 42px; }
@@ -519,6 +545,7 @@ body::before {
   .cocktail-taste { background: #fbf5e8; border-left-color: #8b7340; }
   .cocktail { page-break-inside: avoid; }
   .cover { page-break-after: always; }
+  .back-to-list { display: none !important; }
 }
 
 .cocktail { padding: 32px 32px 28px; }
@@ -598,7 +625,7 @@ body::before {
   </header>
 
   
-    <nav class="quick-index" aria-label="전체 칵테일 목록">
+    <nav class="quick-index" id="quick-index" aria-label="전체 칵테일 목록">
       <div class="quick-index-title">— Full List · 전체 목록 —</div>
       <div class="qi-grid">
         <div class="qi-cat">
@@ -663,6 +690,7 @@ body::before {
         <dt>Glass</dt><dd>Old Fashioned</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-cosmopolitan">
       <div class="cocktail-head">
@@ -680,6 +708,7 @@ body::before {
         <dt>Glass</dt><dd>Martini</dd>
         <dt>Garnish</dt><dd>라임 슬라이스 또는 오렌지 필</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-cape-cod">
       <div class="cocktail-head">
@@ -697,6 +726,7 @@ body::before {
         <dt>Glass</dt><dd>Highball</dd>
         <dt>Garnish</dt><dd>라임 웨지</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-blue-lagoon">
       <div class="cocktail-head">
@@ -714,6 +744,7 @@ body::before {
         <dt>Glass</dt><dd>롱드링크 (Highball)</dd>
         <dt>Garnish</dt><dd>레몬 슬라이스 · 체리</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-kamikaze">
       <div class="cocktail-head">
@@ -731,6 +762,7 @@ body::before {
         <dt>Glass</dt><dd>샷 / Cocktail</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-black-russian">
       <div class="cocktail-head">
@@ -748,6 +780,7 @@ body::before {
         <dt>Glass</dt><dd>Old Fashioned</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-woo-woo">
       <div class="cocktail-head">
@@ -765,6 +798,7 @@ body::before {
         <dt>Glass</dt><dd>적당한 잔 (Highball 권장)</dd>
         <dt>Garnish</dt><dd>라임 웨지 (짜서 넣기)</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article></div>
         </section>
         <section class="section" id="whisky">
@@ -790,6 +824,7 @@ body::before {
         <dt>Glass</dt><dd>Old Fashioned</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article></div>
         </section>
         <section class="section" id="rum">
@@ -815,6 +850,7 @@ body::before {
         <dt>Glass</dt><dd>Cocktail</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-cuba-libre">
       <div class="cocktail-head">
@@ -832,6 +868,7 @@ body::before {
         <dt>Glass</dt><dd>Highball</dd>
         <dt>Garnish</dt><dd>라임 웨지</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-bacardi-cocktail">
       <div class="cocktail-head">
@@ -849,6 +886,7 @@ body::before {
         <dt>Glass</dt><dd>Cocktail</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-sky-diving">
       <div class="cocktail-head">
@@ -866,6 +904,7 @@ body::before {
         <dt>Glass</dt><dd>Cocktail</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-blue-heaven">
       <div class="cocktail-head">
@@ -883,6 +922,7 @@ body::before {
         <dt>Glass</dt><dd>Hurricane</dd>
         <dt>Garnish</dt><dd>파인애플 · 체리</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article></div>
         </section>
         <section class="section" id="tequila">
@@ -908,6 +948,7 @@ body::before {
         <dt>Glass</dt><dd>Margarita</dd>
         <dt>Garnish</dt><dd>소금 림 (Salt Rim)</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-matador">
       <div class="cocktail-head">
@@ -925,6 +966,7 @@ body::before {
         <dt>Glass</dt><dd>Old Fashioned</dd>
         <dt>Garnish</dt><dd>파인애플</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-mexicola">
       <div class="cocktail-head">
@@ -942,6 +984,7 @@ body::before {
         <dt>Glass</dt><dd>Highball</dd>
         <dt>Garnish</dt><dd>라임 웨지</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article></div>
         </section>
         <section class="section" id="gin">
@@ -967,6 +1010,7 @@ body::before {
         <dt>Glass</dt><dd>Cocktail</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-white-lady">
       <div class="cocktail-head">
@@ -984,6 +1028,7 @@ body::before {
         <dt>Glass</dt><dd>Cocktail</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article></div>
         </section>
         <section class="section" id="multi">
@@ -1009,6 +1054,7 @@ body::before {
         <dt>Glass</dt><dd>Hurricane</dd>
         <dt>Garnish</dt><dd>레몬</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-long-island-iced-tea">
       <div class="cocktail-head">
@@ -1026,6 +1072,7 @@ body::before {
         <dt>Glass</dt><dd>Highball / Hurricane</dd>
         <dt>Garnish</dt><dd>레몬 웨지</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-long-beach-iced-tea">
       <div class="cocktail-head">
@@ -1043,6 +1090,7 @@ body::before {
         <dt>Glass</dt><dd>Highball / Hurricane</dd>
         <dt>Garnish</dt><dd>레몬</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article></div>
         </section>
         <section class="section" id="liqueur">
@@ -1068,6 +1116,7 @@ body::before {
         <dt>Glass</dt><dd>Highball</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-kahlua-matcha-milk">
       <div class="cocktail-head">
@@ -1085,6 +1134,7 @@ body::before {
         <dt>Glass</dt><dd>Old Fashioned</dd>
         <dt>Garnish</dt><dd>말차 가루 (옵션)</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-cassis-orange">
       <div class="cocktail-head">
@@ -1102,6 +1152,7 @@ body::before {
         <dt>Glass</dt><dd>Highball</dd>
         <dt>Garnish</dt><dd>오렌지 슬라이스</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-cassis-soda">
       <div class="cocktail-head">
@@ -1119,6 +1170,7 @@ body::before {
         <dt>Glass</dt><dd>Highball</dd>
         <dt>Garnish</dt><dd>레몬 트위스트</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-bocce-ball">
       <div class="cocktail-head">
@@ -1136,6 +1188,7 @@ body::before {
         <dt>Glass</dt><dd>Highball</dd>
         <dt>Garnish</dt><dd>오렌지 슬라이스</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-aperol-spritz">
       <div class="cocktail-head">
@@ -1153,6 +1206,7 @@ body::before {
         <dt>Glass</dt><dd>Wine</dd>
         <dt>Garnish</dt><dd>오렌지 슬라이스</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-aperol-entrée">
       <div class="cocktail-head">
@@ -1170,6 +1224,7 @@ body::before {
         <dt>Glass</dt><dd>Cocktail</dd>
         <dt>Garnish</dt><dd>레몬 필</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-blue-sapphire">
       <div class="cocktail-head">
@@ -1187,6 +1242,7 @@ body::before {
         <dt>Glass</dt><dd>Highball</dd>
         <dt>Garnish</dt><dd>레몬 · 체리</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article></div>
         </section>
         <section class="section" id="signature">
@@ -1212,6 +1268,7 @@ body::before {
         <dt>Glass</dt><dd>310ml Highball</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-ocean-water">
       <div class="cocktail-head">
@@ -1229,6 +1286,7 @@ body::before {
         <dt>Glass</dt><dd>Highball</dd>
         <dt>Garnish</dt><dd>라임 웨지</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-dream">
       <div class="cocktail-head">
@@ -1246,6 +1304,7 @@ body::before {
         <dt>Glass</dt><dd>Martini</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-green-field">
       <div class="cocktail-head">
@@ -1263,6 +1322,7 @@ body::before {
         <dt>Glass</dt><dd>Martini</dd>
         <dt>Garnish</dt><dd>—</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article></div>
         </section>
         <section class="section" id="mocktail">
@@ -1288,6 +1348,7 @@ body::before {
         <dt>Glass</dt><dd>Highball</dd>
         <dt>Garnish</dt><dd>오렌지 슬라이스</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>
     <article class="cocktail" id="c-shirley-temple">
       <div class="cocktail-head">
@@ -1305,6 +1366,7 @@ body::before {
         <dt>Glass</dt><dd>Highball</dd>
         <dt>Garnish</dt><dd>마라스키노 체리</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article></div>
         </section>
 

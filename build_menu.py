@@ -756,6 +756,31 @@ body::before {
 }
 .cocktail { scroll-margin-top: 80px; }
 
+/* ---------- BACK TO LIST BUTTON ---------- */
+.back-to-list {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid var(--border-faint);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.back-to-list:hover {
+  color: var(--gold);
+  border-color: var(--border);
+}
+.back-to-list::before {
+  content: '←';
+  font-size: 13px;
+}
+
 /* ---------- FOOTER ---------- */
 .footer {
   text-align: center;
@@ -847,6 +872,7 @@ body::before {
   .qi-list a { font-size: 13.5px; padding: 5px 0; }
   .qi-list a:hover { padding-left: 0; }
   .cocktail { scroll-margin-top: 60px; }
+  .back-to-list { font-size: 10px; letter-spacing: 0.2em; padding: 5px 12px; margin-top: 14px; }
 
   .footer { margin-top: 60px; padding-top: 28px; }
   .footer-ornament { font-size: 42px; }
@@ -866,6 +892,7 @@ body::before {
   .cocktail-taste { background: #fbf5e8; border-left-color: #8b7340; }
   .cocktail { page-break-inside: avoid; }
   .cover { page-break-after: always; }
+  .back-to-list { display: none !important; }
 }
 """
 
@@ -1082,6 +1109,7 @@ def render_recipe_card(c):
     out += f'<div class="cocktail-taste">{c["taste"]}</div>'
     if c.get("tip"):
         out += f'<div class="cocktail-tip">{c["tip"]}</div>'
+    out += '<a href="#quick-index" class="back-to-list">목록으로</a>'
     out += '</article>'
     return out
 
@@ -1106,6 +1134,7 @@ def render_guest_card(c):
         <dt>Glass</dt><dd>{c["glass"]}</dd>
         <dt>Garnish</dt><dd>{garnish}</dd>
       </dl>
+      <a href="#quick-index" class="back-to-list">목록으로</a>
     </article>'''
 
 def render_quick_index():
@@ -1128,7 +1157,7 @@ def render_quick_index():
           <ul class="qi-list">{items}</ul>
         </div>''')
     return f'''
-    <nav class="quick-index" aria-label="전체 칵테일 목록">
+    <nav class="quick-index" id="quick-index" aria-label="전체 칵테일 목록">
       <div class="quick-index-title">— Full List · 전체 목록 —</div>
       <div class="qi-grid">{"".join(blocks)}</div>
     </nav>'''
